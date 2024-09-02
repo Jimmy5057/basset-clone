@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxTagCOD</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-fluid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+
+        .order-id {
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .floating-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .floating-icon a {
+            display: inline-block;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .floating-icon .cart {
+            width: 50px; /* Set desired width */
+            height: 50px; /* Set desired height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-icon .cart i {
+            font-size: 24px; /* Adjust the icon size */
+        }
+
+        /* Offcanvas Styles */
+        .offcanvas-header {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .offcanvas-body {
+            padding: 1rem;
+        }
+
+        .offcanvas-body ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .offcanvas-body li {
+            margin-bottom: 15px;
+        }
+
+        .offcanvas-body li i {
+            margin-right: 10px;
+            color: #666;
+        }
+
+        .offcanvas-body li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .offcanvas-body .section-title {
+            font-size: 14px;
+            color: #aaa;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Custom Width for Offcanvas on Mobile */
+        @media (max-width: 768px) {
+            .offcanvas-start {
+                width: 75% !important;
+            }
+        }
+
+        /* Sticky Bottom Navbar */
+        .navbar-sticky-bottom {
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            background-color: #b7babd; /* Bootstrap bg-secondary color */
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-left: 15px;
+        }
+
+        .setting-item {
+            padding: 10px 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-item .form-check-input {
+            margin-left: auto;
+        }
+
+        .setting-item a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .setting-item a:hover {
+            text-decoration: underline;
+        }
+
+        .text-muted {
+            font-size: 12px;
+            color: #666;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NavBar -->
+    <nav class="navbar bg-dark">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center w-100 justify-content-between">
+                <div class="d-flex align-items-center">
+                    <a href="index.html"><i role="button" class="text-white bi bi-arrow-left fs-5 ms-2 me-3"></i></a>
+                    <h6 class="text-white mb-0">Allow Notification</h6>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Content -->
+    <div class="container-fluid">
+        <div class="w-100">
+            <!-- Notifications Section -->
+            <div class="section-title">Notifications</div>
+
+            <div class="setting-item d-flex align-items-center">
+                <span>Push Notifications</span>
+                <div class="form-check form-switch ms-auto">
+                    <input class="form-check-input" type="checkbox" id="pushNotifications">
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div>Ringtone</div>
+                <div class="text-muted">Default (Meet-Za1a9f26-e1ce-46b8-b764-5ea12b59d981)</div>
+            </div>
+
+            <div class="setting-item d-flex align-items-center">
+                <span>Vibrate</span>
+                <div class="form-check ms-auto">
+                    <input class="form-check-input" type="checkbox" id="vibrate" checked>
+                </div>
+            </div>
+
+            <!-- Others Section -->
+            <div class="section-title">Others</div>
+
+            <div class="setting-item">
+                <div>Contact Us</div>
+                <div class="text-muted">support@maxtag.com</div>
+            </div>
+
+            <div class="setting-item">
+                <div>Copyright</div>
+                <div class="text-muted">Copyright © 2023 Max Tag Delivery.<br>All rights reserved</div>
+            </div>
+
+            <div class="setting-item">
+                <div>Build Version & Serial</div>
+                <div class="text-muted">Version 1.0 (153106cac049a786)</div>
+            </div>
+
+            <div class="setting-item">
+                <a href="#">Term & Policies</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function copyToClipboard() {
+            const textToCopy = '153106cac049a786';
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Order ID copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>

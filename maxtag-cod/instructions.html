@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxTagCOD</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-fluid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+
+        .order-id {
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .floating-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .floating-icon a {
+            display: inline-block;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .floating-icon .cart {
+            width: 50px; /* Set desired width */
+            height: 50px; /* Set desired height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-icon .cart i {
+            font-size: 24px; /* Adjust the icon size */
+        }
+
+        /* Offcanvas Styles */
+        .offcanvas-header {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .offcanvas-body {
+            padding: 1rem;
+        }
+
+        .offcanvas-body ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .offcanvas-body li {
+            margin-bottom: 15px;
+        }
+
+        .offcanvas-body li i {
+            margin-right: 10px;
+            color: #666;
+        }
+
+        .offcanvas-body li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .offcanvas-body .section-title {
+            font-size: 14px;
+            color: #aaa;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Custom Width for Offcanvas on Mobile */
+        @media (max-width: 768px) {
+            .offcanvas-start {
+                width: 75% !important;
+            }
+        }
+
+        /* Sticky Bottom Navbar */
+        .navbar-sticky-bottom {
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            background-color: #b7babd; /* Bootstrap bg-secondary color */
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .onboarding-image {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .onboarding-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .onboarding-indicators .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .onboarding-indicators .dot.active {
+            background-color: #007bff;
+        }
+
+        .onboarding-footer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .onboarding-footer button {
+            background: none;
+            border: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .onboarding-footer button:disabled {
+            color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <!-- Content -->
+    <div class="container-fluid">
+        <div class="content w-100">
+            <div id="onboardingCarousel" class="carousel slide">
+                <div class="carousel-inner">
+    
+                    <!-- Step 1 -->
+                    <div class="carousel-item active">
+                        <h2 class="fw-bold">WELCOME</h2>
+                        <p>MTDelivery is a Premium Online Shopping Platform for Everyone</p>
+                        <img src="/wp-content/images/step1.png" width="80" height="80"  alt="Step 1 Image" class="onboarding-image">
+                    </div>
+    
+                    <!-- Step 2 -->
+                    <div class="carousel-item px-2">
+                        <h2 class="fw-bold">DISCOVER PRODUCT</h2>
+                        <p>Search Latest and Featured Product With Best Price</p>
+                        <img src="/wp-content/images/step2.gif" width="80" height="80" alt="Step 2 Image" class="onboarding-image">
+                    </div>
+    
+                    <!-- Step 3 -->
+                    <div class="carousel-item px-2">
+                        <h2 class="fw-bold">ADD TO CART</h2>
+                        <p>Add to Cart All Product You need And Checkout the Order</p>
+                        <img src="/wp-content/images/step3.gif"  width="80" height="80" alt="Step 3 Image" class="onboarding-image">
+                    </div>
+    
+                    <!-- Step 4 -->
+                    <div class="carousel-item px-2">
+                        <h2 class="fw-bold">VERIFY AND RECEIVE</h2>
+                        <p>We Will Verify Your Order Pay the Bill and Receive the Product</p>
+                        <img src="/wp-content/images/step4.gif" width="80" height="80"  alt="Step 4 Image" class="onboarding-image">
+                    </div>
+                </div>
+    
+                <!-- Indicators -->
+                <div class="onboarding-indicators">
+                    <span class="dot active" data-bs-target="#onboardingCarousel" data-bs-slide-to="0"></span>
+                    <span class="dot" data-bs-target="#onboardingCarousel" data-bs-slide-to="1"></span>
+                    <span class="dot" data-bs-target="#onboardingCarousel" data-bs-slide-to="2"></span>
+                    <span class="dot" data-bs-target="#onboardingCarousel" data-bs-slide-to="3"></span>
+                </div>
+    
+                <!-- Footer Navigation -->
+                <div class="onboarding-footer">
+                    <button id="skipButton" onclick="skipOnboarding()">Skip</button>
+                    <button id="nextButton" onclick="nextSlide()">Next</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function copyToClipboard() {
+            const textToCopy = '153106cac049a786';
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Order ID copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        var currentSlide = 0;
+        const carouselElement = document.getElementById('onboardingCarousel');
+        const bootstrapCarousel = new bootstrap.Carousel(carouselElement, {
+            interval: false,
+            wrap: false
+        });
+
+        function updateIndicators() {
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            const carousel = document.querySelector('#onboardingCarousel');
+            const totalSlides = document.querySelectorAll('.carousel-item').length;
+
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+                bsCarousel.to(currentSlide);
+                updateIndicators();
+            }
+
+            if (currentSlide === totalSlides - 1) {
+                document.getElementById('nextButton').innerText = 'Done';
+                document.getElementById('nextButton').setAttribute('onclick', 'finishOnboarding()');
+            }
+        }
+
+        function skipOnboarding() {
+            window.location.href = './index.html';
+        }
+
+        function finishOnboarding() {
+            window.location.href = './index.html';
+        }
+    </script>
+</body>
+
+</html>
